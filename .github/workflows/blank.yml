@@ -19,6 +19,12 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    - name: Install Gradle system-wide
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Generate gradlew wrapper
+      run: gradle wrapper
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug --no-daemon
 
