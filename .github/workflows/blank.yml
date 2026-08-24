@@ -19,11 +19,14 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Install Gradle
+    - name: Install Gradle system-wide
       uses: gradle/actions/setup-gradle@v3
 
+    - name: Generate gradlew wrapper
+      run: gradle wrapper
+
     - name: Build debug APK
-      run: gradle assembleDebug --no-daemon --stacktrace
+      run: ./gradlew assembleDebug
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
